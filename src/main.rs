@@ -1,18 +1,16 @@
-pub mod news;
-mod post;
-mod errors;
+pub mod parser;
 
 use std::fs::File;
 use std::io;
 use serde_json::to_writer;
-use news::News;
-use crate::errors::Error;
-use crate::post::Post;
+use parser::news::News;
+use parser::errors::Error;
+use parser::post::Post;
 
 #[tokio::main]
 async fn main() -> io::Result<()> {
     const ENDPOINT: &str = "https://www.nasa.gov";
-    const PAGES: usize = 20;
+    const PAGES: usize = 2;
 
     // Create news and posts vectors
     let mut news_vec: Vec<News> = Vec::new();

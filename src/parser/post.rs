@@ -1,7 +1,7 @@
 use reqwest::Response;
 use scraper::{ElementRef, Html, Selector};
 use serde::{Deserialize, Serialize};
-use crate::errors::{Error, Errors};
+use super::errors::{Error, Errors};
 
 #[derive(Debug, Serialize, Deserialize, PartialEq, Clone)]
 pub struct PostContent {
