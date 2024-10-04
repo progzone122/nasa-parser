@@ -3,13 +3,13 @@
 diesel::table! {
     news (id) {
         id -> Integer,
-        #[max_length = 22]
+        #[max_length = 500]
         title -> Varchar,
-        #[max_length = 22]
+        #[max_length = 500]
         short_description -> Nullable<Varchar>,
-        #[max_length = 44]
+        #[max_length = 500]
         image -> Nullable<Varchar>,
-        #[max_length = 44]
+        #[max_length = 200]
         url -> Varchar,
         post_id -> Integer,
     }

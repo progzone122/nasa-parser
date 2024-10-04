@@ -5,14 +5,14 @@ use super::errors::{Error, Errors};
 
 #[derive(Debug, Serialize, Deserialize, PartialEq, Clone)]
 pub struct PostContent {
-    text: Option<String>,
-    html: Option<String>,
+    pub(crate) text: Option<String>,
+    pub(crate) html: Option<String>,
 }
 
 #[derive(Debug, Serialize, Deserialize, PartialEq, Clone)]
 pub struct Post {
     title: Option<String>,
-    content: PostContent
+    pub(crate) content: PostContent
 }
 
 impl Post {

@@ -1,3 +1,4 @@
+use diesel::result::Error as DieselError;
 #[derive(Debug)]
 pub enum Errors {
     FailedParseSelector,
@@ -28,5 +29,11 @@ impl Error {
             Errors::FailedParseJson => format!("Json parse failed: {}", self.message),
             Errors::FailedSerializeJson => format!("Serialize json failed: {}", self.message)
         }
+    }
+}
+
+impl From<DieselError> for Error {
+    fn from(err: DieselError) -> Self {
+        Error::new(Errors::FailedRequest, format!("Diesel error: {}", err))
     }
 }

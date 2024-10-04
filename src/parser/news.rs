@@ -6,10 +6,10 @@ use super::errors::{Error, Errors};
 
 #[derive(Debug, Serialize, Deserialize, PartialEq, Clone)]
 pub struct Post {
-    title: Option<String>,
-    short_description: Option<String>,
+    pub(crate) title: Option<String>,
+    pub(crate) short_description: Option<String>,
     pub(crate) url: Option<String>,
-    image: Option<String>
+    pub(crate) image: Option<String>
 }
 
 impl Post {
@@ -20,10 +20,6 @@ impl Post {
             url,
             image
         }
-    }
-
-    pub fn to_json(&self) -> Result<String, Error> {
-        serde_json::to_string(self).map_err(|e| Error::new(Errors::FailedSerializeJson, e.to_string()))
     }
 
     fn get_title(element: &scraper::ElementRef<'_>) -> Result<Option<String>, Error> {
@@ -113,5 +109,9 @@ impl News {
 
         Ok(News { posts, page })
 
+    }
+
+    pub fn to_json(&self) -> Result<String, Error> {
+        serde_json::to_string(self).map_err(|e| Error::new(Errors::FailedSerializeJson, e.to_string()))
     }
 }

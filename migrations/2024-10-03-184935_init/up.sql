@@ -7,10 +7,10 @@ CREATE TABLE `posts` (
 
 CREATE TABLE `news` (
                         `id` int(11) NOT NULL AUTO_INCREMENT,
-                        `title` varchar(22) NOT NULL,
-                        `short_description` varchar(22) DEFAULT NULL,
-                        `image` varchar(44) DEFAULT NULL,
-                        `url` varchar(44) NOT NULL,
+                        `title` varchar(500) NOT NULL,
+                        `short_description` varchar(500) DEFAULT NULL,
+                        `image` varchar(500) DEFAULT NULL,
+                        `url` varchar(200) NOT NULL,
                         `post_id` int(11) NOT NULL,
                         PRIMARY KEY (`id`),
                         UNIQUE KEY `post_id` (`post_id`),
